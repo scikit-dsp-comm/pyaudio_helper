@@ -35,5 +35,8 @@ setup(name='pyaudio-helper',
       include_package_data=True,
       license='BSD',
       install_requires=requirements.split(),
+      extras_require={
+          'helpers': ['ipywidgets']
+      },
       python_requires='>=3.5',
      )
