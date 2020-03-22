@@ -114,15 +114,15 @@ class DSPIOStream(object):
             raise ValueError('Selected output device has no outputs')
         return True
 
-    def interaction(self, Stream):
-        if (Stream == 'Start Streaming'):
-            self.thread_stream(Tsec=self.Tsec, numChan=self.numChan)
+    def interaction(self, stream):
+        if (stream == 'Start Streaming'):
+            self.thread_stream(t_sec=self.Tsec, num_chan=self.numChan)
             print('                       Status: Streaming')
         else:
             self.stop()
             print('                       Status: Stopped')
 
-    def interactive_stream(self, Tsec=2, numChan=1):
+    def interactive_stream(self, t_sec=2, num_chan=1):
         """
         Stream audio with start and stop radio buttons
 
@@ -134,16 +134,16 @@ class DSPIOStream(object):
         Parameters
         ----------
 
-        Tsec : stream time in seconds if Tsec > 0. If Tsec = 0, then stream goes to infinite
+        t_sec : stream time in seconds if Tsec > 0. If Tsec = 0, then stream goes to infinite
         mode. When in infinite mode, the "Stop Streaming" radio button or Tsec.stop() can be
         used to stop the stream.
 
-        numChan : number of channels. Use 1 for mono and 2 for stereo.
+        num_chan : number of channels. Use 1 for mono and 2 for stereo.
 
 
         """
-        self.Tsec = Tsec
-        self.numChan = numChan
+        self.Tsec = t_sec
+        self.numChan = num_chan
         self.interactiveFG = 1
         self.play = interactive(self.interaction, Stream=ToggleButtons(
             options=['Start Streaming', 'Stop Streaming'],
@@ -151,7 +151,7 @@ class DSPIOStream(object):
             value='Stop Streaming'))
         logger.info(self.play)
 
-    def thread_stream(self, Tsec=2, numChan=1):
+    def thread_stream(self, t_sec=2, num_chan=1):
         """
         Stream audio in a thread using callback. The stream is threaded, so widgets can be
         used simultaneously during stream.
@@ -159,10 +159,10 @@ class DSPIOStream(object):
         Parameters
         ----------
 
-        Tsec : stream time in seconds if Tsec > 0. If Tsec = 0, then stream goes to infinite
+        t_sec : stream time in seconds if Tsec > 0. If Tsec = 0, then stream goes to infinite
         mode. When in infinite mode, Tsec.stop() can be used to stop the stream.
 
-        numChan : number of channels. Use 1 for mono and 2 for stereo.
+        num_chan : number of channels. Use 1 for mono and 2 for stereo.
 
         """
 
@@ -170,7 +170,7 @@ class DSPIOStream(object):
             self.stream(t_sec=time, num_chan=channel)
 
         # Thread the streaming function
-        t = Thread(target=stream_thread, args=(Tsec, numChan,))
+        t = Thread(target=stream_thread, args=(t_sec, num_chan,))
 
         # Start the stream
         t.start()
@@ -350,7 +350,7 @@ class DSPIOStream(object):
         plt.xlabel(r'Time (ms)')
         plt.grid();
 
-    def get_LR(self, in_data):
+    def get_lr(self, in_data):
         """
         Splits incoming packed stereo data into separate left and right channels
         and returns an array of left samples and an array of right samples
@@ -372,7 +372,7 @@ class DSPIOStream(object):
                 self.left_in[(int)(i / 2)] = in_data[i]
         return self.left_in, self.right_in
 
-    def pack_LR(self, left_out, right_out):
+    def pack_lr(self, left_out, right_out):
         """
         Packs separate left and right channel data into one array to output
         and returns the output.
@@ -394,7 +394,7 @@ class DSPIOStream(object):
         return self.out
 
 
-class loop_audio(object):
+class LoopAudio(object):
     """
     Loop signal ndarray during playback.
     Optionally start_offset samples into the array.
