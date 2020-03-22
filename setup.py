@@ -19,7 +19,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 about = {}
-with codecs.open(os.path.join(here, 'pyaudio_helper', '__version__.py'), encoding='utf-8') as f:
+with codecs.open(os.path.join(here, 'sk_dsp_comm', 'pyaudio_helper', '__version__.py'), encoding='utf-8') as f:
     exec(f.read(), about)
 
 setup(name='pyaudio-helper',
@@ -29,9 +29,10 @@ setup(name='pyaudio-helper',
       long_description_content_type="text/markdown",
       author='Mark Wickert',
       author_email='mwickert@uccs.edu',
+      maintainer='Chiranth Siddappa',
+      maintainer_email='chiranthsiddappa@gmail.com',
       url='https://github.com/scikit-dsp-comm/pyaudio_helper',
-      package_dir={'pyaudio_helper': 'pyaudio_helper'},
-      packages=['pyaudio_helper'],
+      packages=['sk_dsp_comm.pyaudio_helper'],
       include_package_data=True,
       license='BSD',
       install_requires=requirements.split(),
