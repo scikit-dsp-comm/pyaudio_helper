@@ -1,5 +1,6 @@
 # PyAudio Helper
 
+[![pypi](https://img.shields.io/pypi/v/pyaudio-helper.svg)](https://pypi.python.org/pypi/pyaudio-helper)
 [![travis](https://travis-ci.com/scikit-dsp-comm/pyaudio_helper.svg?branch=master)](https://travis-ci.com/github/scikit-dsp-comm/pyaudio_helper)
 
 ### Dependencies for `pyaudio`
