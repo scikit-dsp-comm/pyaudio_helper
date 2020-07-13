@@ -1,3 +1,4 @@
 recommonmark
 sphinx
 nbsphinx
+numpydoc

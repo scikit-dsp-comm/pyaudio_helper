@@ -24,13 +24,13 @@ except FileExistsError as fee:
 
 # -- Project information -----------------------------------------------------
 
-from sk_dsp_comm.pyaudio_helper import __version__
+#from sk_dsp_comm.pyaudio_helper import __version__
 
 project = 'pyaudio-helper'
 copyright = '2020, Mark Wickert, Andrew Smit'
 author = 'Mark Wickert, Andrew Smit'
-version = __version__
-release = __version__
+#version = __version__
+#release = __version__
 
 
 # -- General configuration ---------------------------------------------------
@@ -39,7 +39,12 @@ release = __version__
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'recommonmark'
+    'numpydoc',
+    'recommonmark',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.doctest',
+    'sphinx.ext.mathjax',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

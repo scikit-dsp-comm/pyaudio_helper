@@ -16,6 +16,7 @@ Readme
    :maxdepth: 2
    :caption: Contents:
 
+   pyaudio_helper
 
 
 Indices and tables
