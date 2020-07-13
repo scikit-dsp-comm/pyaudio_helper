@@ -1,6 +1,6 @@
 sudo: false
 before_install:
-  - sudo apt-get -y install portaudio19-dev python-all-dev
+  - apt-get -y install portaudio19-dev python-all-dev
 services:
   - xvfb
 language: python
