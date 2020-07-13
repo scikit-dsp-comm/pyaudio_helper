@@ -1,5 +1,7 @@
 # PyAudio Helper
 
+[![travis](https://travis-ci.com/scikit-dsp-comm/pyaudio_helper.svg?branch=master)](https://travis-ci.com/github/scikit-dsp-comm/pyaudio_helper)
+
 ### Dependencies for `pyaudio`
 
 Across the three popular platforms, Windows, macOS, and Linux, `pyaudio`, is 
