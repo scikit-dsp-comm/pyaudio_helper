@@ -13,6 +13,11 @@ Readme
    readme.md
 
 .. toctree::
+   :titlesonly:
+
+   nb_examples
+
+.. toctree::
    :maxdepth: 2
    :caption: Contents:
 

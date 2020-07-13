@@ -39,6 +39,7 @@ author = 'Mark Wickert, Andrew Smit'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'nbsphinx',
     'numpydoc',
     'recommonmark',
     'sphinx.ext.autodoc',
