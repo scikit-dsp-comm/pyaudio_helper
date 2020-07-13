@@ -1,4 +1,3 @@
-sudo: false
 before_install:
   - apt-get -y install portaudio19-dev python-all-dev
 services:
