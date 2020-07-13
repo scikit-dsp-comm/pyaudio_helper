@@ -3,4 +3,4 @@ numpydoc
 jupyter_sphinx
 recommonmark
 sphinx
-scikit-dsp-commm
+scikit-dsp-comm
