@@ -11,5 +11,5 @@ install: pip install tox-travis
 script: tox
 after_success:
 - pip install coveralls
-- coverage run --source=pyaudio_helper setup.py test
+- coverage run --source=sk_dsp_comm.pyaudio_helper setup.py test
 - coveralls
