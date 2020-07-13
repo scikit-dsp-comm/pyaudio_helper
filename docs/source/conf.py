@@ -16,7 +16,7 @@ log = getLogger(__name__)
 import os
 import sys
 sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, os.path.abspath('../../sk_dsp_comm'))
+sys.path.insert(0, os.path.abspath('../../sk_dsp_comm/pyaudio_helper'))
 try:
     os.symlink('../../README.md', 'readme.md')
 except FileExistsError as fee:
@@ -29,8 +29,8 @@ from sk_dsp_comm.pyaudio_helper import __version__
 project = 'pyaudio-helper'
 copyright = '2020, Mark Wickert, Andrew Smit'
 author = 'Mark Wickert, Andrew Smit'
-version = __version__.__version__
-release = __version__.__version__
+version = __version__
+release = __version__
 
 
 # -- General configuration ---------------------------------------------------

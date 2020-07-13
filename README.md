@@ -1,5 +1,7 @@
 # pyaudio-helper
 
+[![Docs](https://readthedocs.org/projects/pyaudio-helper/badge/?version=latest)](http://pyaudio-helper.readthedocs.io/en/latest/?badge=latest)
+
 ### Dependencies for `pyaudio`
 
 Across the three popular platforms, Windows, macOS, and Linux, `pyaudio`, is 
