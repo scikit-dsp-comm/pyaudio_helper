@@ -1,4 +1,6 @@
-# PyAudio Helper
+# pyaudio-helper
+
+[![Docs](https://readthedocs.org/projects/pyaudio-helper/badge/?version=latest)](http://pyaudio-helper.readthedocs.io/en/latest/?badge=latest)
 
 [![pypi](https://img.shields.io/pypi/v/pyaudio-helper.svg)](https://pypi.python.org/pypi/pyaudio-helper)
 [![travis](https://travis-ci.com/scikit-dsp-comm/pyaudio_helper.svg?branch=master)](https://travis-ci.com/github/scikit-dsp-comm/pyaudio_helper)
@@ -16,4 +18,3 @@ All the capability of the package is available less `PyAudio` and the RTL-SDR ra
 [@mwickert](https://github.com/mwickert)
 
 [@andrewsmitty](https://github.com/andrewsmitty)
-
