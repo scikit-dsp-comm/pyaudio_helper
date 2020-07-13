@@ -6,7 +6,7 @@ class TestImports(TestCase):
 
 
     def test_pyaudio_helper_from(self):
-        from pyaudio_helper import pyaudio_helper
+        from sk_dsp_comm.pyaudio_helper import pyaudio_helper
 
     def test_pyaudio_helper_import(self):
-        import pyaudio_helper.pyaudio_helper
+        import sk_dsp_comm.pyaudio_helper.pyaudio_helper
