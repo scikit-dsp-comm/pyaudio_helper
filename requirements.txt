@@ -1,3 +1,4 @@
 matplotlib
 numpy
 pyaudio
+setuptools>=40.1.0
