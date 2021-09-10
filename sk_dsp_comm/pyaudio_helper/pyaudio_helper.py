@@ -40,17 +40,12 @@ except ImportError:
 import time
 import matplotlib.pyplot as plt
 from threading import Thread
-
-try:
-    from ipywidgets import interactive
-    from ipywidgets import ToggleButtons
-except ImportError:
-    warnings.warn("Please install ipywidgets for full functionality", ImportWarning)
+from . interactive_widgets import InteractiveWidgets
 
 logger = logging.getLogger(__name__)
 
 
-class DSPIOStream(object):
+class DSPIOStream(InteractiveWidgets):
     """
     Real-time DSP one channel input/output audio streaming
 
@@ -59,8 +54,7 @@ class DSPIOStream(object):
     Mark Wickert, Andrew Smit September 2017
     """
 
-    def __init__(self, stream_callback, in_idx=1, out_idx=4, frame_length=1024,
-                 fs=44100, t_capture=0, sleep_time=0.1):
+    def __init__(self, stream_callback, in_idx=1, out_idx=4, frame_length=1024, fs=44100, t_capture=0, sleep_time=0.1):
         """
 
         :param stream_callback: Function that will provide the callback functionality
@@ -71,6 +65,7 @@ class DSPIOStream(object):
         :param t_capture: Time to capture (seconds)
         :param sleep_time:
         """
+        super().__init__()
         self.in_idx = in_idx
         self.out_idx = out_idx
         self.in_out_check()
@@ -80,6 +75,7 @@ class DSPIOStream(object):
         self.stream_callback = stream_callback
         self.p = pyaudio.PyAudio()
         self.stream_data = False
+        self.stop_stream = False
         self.capture_sample_count = 0
         self.data_capture = list()
         self.data_capture_left = list()
@@ -114,17 +110,25 @@ class DSPIOStream(object):
             raise ValueError('Selected output device has no outputs')
         return True
 
-    def interaction(self, stream):
-        if (stream == 'Start Streaming'):
-            self.thread_stream(t_sec=self.Tsec, num_chan=self.numChan)
-            print('                       Status: Streaming')
-        else:
-            self.stop()
-            print('                       Status: Stopped')
-
-    def interactive_stream(self, t_sec=2, num_chan=1):
+    def start_stream_interactive_callback(self):
         """
-        Stream audio with start and stop radio buttons
+        This method will handle the start button callback.
+        :return:
+        """
+        self.thread_stream(t_sec=self.Tsec, num_chan=self.numChan)
+        print('                       Status: Streaming')
+
+    def stop_stream_interactive_callback(self):
+        """
+        This method will handle the stop button callback.
+        :return:
+        """
+        self.stop()
+        print('                       Status: Stopped')
+
+    def interactive_stream(self, t_sec=None, num_chan=None):
+        """
+        Stream audio with start and stop buttons from InteractiveWidgets.
 
         Interactive stream is designed for streaming audio through this object using
         a callback function. This stream is threaded, so it can be used with ipywidgets.
@@ -142,14 +146,11 @@ class DSPIOStream(object):
 
 
         """
-        self.Tsec = t_sec
-        self.numChan = num_chan
+        self.Tsec = t_sec if t_sec else self.Tsec
+        self.numChan = num_chan if num_chan else self.numChan
         self.interactiveFG = 1
-        self.play = interactive(self.interaction, Stream=ToggleButtons(
-            options=['Start Streaming', 'Stop Streaming'],
-            description=' ',
-            value='Stop Streaming'))
-        logger.info(self.play)
+        return self.create_interactive_widgets(start_handler=self.start_stream_interactive_callback,
+                                               stop_handler=self.stop_stream_interactive_callback)
 
     def thread_stream(self, t_sec=2, num_chan=1):
         """
