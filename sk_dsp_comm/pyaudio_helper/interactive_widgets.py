@@ -52,7 +52,7 @@ class InteractiveWidgets():
         self.start_handler = start_handler
         self.stop_handler = stop_handler
         self.start_streaming_button.observe(self.start_streaming_button_handler)
-        self.stop_streaming_button.observer(self.stop_streaming_button_handler)
+        self.stop_streaming_button.observe(self.stop_streaming_button_handler)
         self.display_holder = VBox([HBox([self.start_streaming_button, self.stop_streaming_button]), self.output_area])
         return self.display_holder
 
@@ -62,7 +62,7 @@ class InteractiveWidgets():
         Disable the start button on click, and set the stop button to False.
         :return:
         """
-        if self.stop_streaming_button.value:
+        if change['new'] == True:  # This is required because otherwise this will trigger true on dicts/other objects
             self.output_area.clear_output()
             self.start_streaming_button.disabled = True
             self.stop_streaming_button.value = False
@@ -76,8 +76,13 @@ class InteractiveWidgets():
         :param change:
         :return:
         """
-        if self.stop_streaming_button.value:
-            self.start_streaming_button.disabled = False
+        if change['new'] == True:  # This is required because otherwise this will trigger true on dicts/other objects
             self.start_streaming_button.value = False
+            self.start_streaming_button.disabled = False
             with self.output_area:
                 self.stop_handler()
+
+    def set_stopped_state(self):
+        self.start_streaming_button.value = False
+        self.start_streaming_button.disabled = False
+        self.stop_streaming_button.value = True

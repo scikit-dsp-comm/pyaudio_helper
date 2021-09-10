@@ -85,7 +85,7 @@ class DSPIOStream(InteractiveWidgets):
         self.left_in = np.zeros(frame_length)
         self.right_in = np.zeros(frame_length)
         self.out = np.zeros(frame_length * 2)
-        self.interactiveFG = 0
+        self.interactiveFG = False
         self.print_when_done = 1
         self.DSP_tic = list()
         self.DSP_toc = list()
@@ -148,7 +148,7 @@ class DSPIOStream(InteractiveWidgets):
         """
         self.Tsec = t_sec if t_sec else self.Tsec
         self.numChan = num_chan if num_chan else self.numChan
-        self.interactiveFG = 1
+        self.interactiveFG = True
         return self.create_interactive_widgets(start_handler=self.start_stream_interactive_callback,
                                                stop_handler=self.stop_stream_interactive_callback)
 
@@ -238,12 +238,11 @@ class DSPIOStream(InteractiveWidgets):
         self.stream_data = True
         # print('Audio input/output streaming session complete!')
 
-        if (self.interactiveFG):
-            # Move radio button back to 'Stop Streaming'
-            self.play.children[0].value = 'Stop Streaming'
-        else:
-            if (self.print_when_done == 1):
-                print('Completed')
+        if self.interactiveFG:
+            self.set_stopped_state()
+
+        if (self.print_when_done == 1):
+            print('Completed')
 
     def stop(self):
         """
