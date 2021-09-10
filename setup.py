@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import find_namespace_packages, setup
 import os
 import codecs
 
@@ -32,7 +32,7 @@ setup(name='pyaudio-helper',
       maintainer='Chiranth Siddappa',
       maintainer_email='chiranthsiddappa@gmail.com',
       url='https://github.com/scikit-dsp-comm/pyaudio_helper',
-      packages=['sk_dsp_comm.pyaudio_helper'],
+      packages=find_namespace_packages(include=['sk_dsp_comm.*']),
       include_package_data=True,
       license='BSD',
       install_requires=requirements.split(),
