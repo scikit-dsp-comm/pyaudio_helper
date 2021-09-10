@@ -62,7 +62,7 @@ class InteractiveWidgets():
         Disable the start button on click, and set the stop button to False.
         :return:
         """
-        if change['new'] == True:  # This is required because otherwise this will trigger true on dicts/other objects
+        if change['new']:
             self.output_area.clear_output()
             self.start_streaming_button.disabled = True
             self.stop_streaming_button.value = False
