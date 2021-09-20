@@ -21,6 +21,7 @@ Readme
    :maxdepth: 2
    :caption: Contents:
 
+   interactive_widgets
    pyaudio_helper
 
 
