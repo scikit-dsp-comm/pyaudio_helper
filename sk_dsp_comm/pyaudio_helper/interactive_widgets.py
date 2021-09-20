@@ -9,13 +9,14 @@ except ImportError:
 
 
 class InteractiveWidgets():
+    """
+    Use this class to bind start/stop interactivity to an existing class.
+    Set start_handler, and stop_handler with functions for the button handlers to call, then call
+    :func:`InteractiveWidgets.create_interactive_widgets` to get started.
+    """
 
     def __init__(self):
         """
-        Use this class to bind start/stop interactivity to an existing class.
-        Set start_handler, and stop_handler with functions for the button handlers to call, then call
-        `create_interactive_widgets` to get started.
-
         To be safe, all objects will be left blank in major version 1.x.x on init.
         """
         self.start_streaming_button = None
