@@ -1,5 +1,9 @@
 # PyAudio Helper
 
+[![pypi](https://img.shields.io/pypi/v/pyaudio-helper.svg)](https://pypi.python.org/pypi/pyaudio-helper)
+[![Docs](https://readthedocs.org/projects/pyaudio-helper/badge/?version=latest)](http://pyaudio-helper.readthedocs.io/en/latest/?badge=latest)
+[![travis](https://travis-ci.com/scikit-dsp-comm/pyaudio_helper.svg?branch=master)](https://travis-ci.com/github/scikit-dsp-comm/pyaudio_helper)
+
 ## Dependencies for `pyaudio`
 
 Across the three popular platforms, Windows, macOS, and Linux, `pyaudio`, is 
