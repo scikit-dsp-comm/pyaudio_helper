@@ -55,6 +55,7 @@ class DSPIOStream(InteractiveWidgets):
     """
 
     def __init__(self, stream_callback, in_idx=1, out_idx=4, frame_length=1024, fs=44100, t_capture=0, sleep_time=0.1,
+                 t_sec: int = 2,
                  num_chan: int = 1):
         """
 
@@ -65,6 +66,8 @@ class DSPIOStream(InteractiveWidgets):
         :param fs: Sampling frequency
         :param t_capture: Time to capture (seconds)
         :param sleep_time:
+        :param t_sec: Stream time > 0 for capture, otherwise 0 for no interrupt
+        :param num_chan: Number of channels 1 or 2
         """
         super().__init__()
         self.in_idx = in_idx
@@ -82,7 +85,7 @@ class DSPIOStream(InteractiveWidgets):
         self.data_capture_left = list()
         self.data_capture_right = list()
         self.Tcapture = t_capture
-        self.Tsec = None
+        self.Tsec = t_sec
         self.numChan = num_chan
         self.Ncapture = int(self.fs * self.Tcapture)
         self.left_in = np.zeros(frame_length)
