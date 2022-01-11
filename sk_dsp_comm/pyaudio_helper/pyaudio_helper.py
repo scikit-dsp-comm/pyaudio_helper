@@ -54,7 +54,8 @@ class DSPIOStream(InteractiveWidgets):
     Mark Wickert, Andrew Smit September 2017
     """
 
-    def __init__(self, stream_callback, in_idx=1, out_idx=4, frame_length=1024, fs=44100, t_capture=0, sleep_time=0.1):
+    def __init__(self, stream_callback, in_idx=1, out_idx=4, frame_length=1024, fs=44100, t_capture=0, sleep_time=0.1,
+                 num_chan: int = 1):
         """
 
         :param stream_callback: Function that will provide the callback functionality
@@ -82,7 +83,7 @@ class DSPIOStream(InteractiveWidgets):
         self.data_capture_right = list()
         self.Tcapture = t_capture
         self.Tsec = None
-        self.numChan = None
+        self.numChan = num_chan
         self.Ncapture = int(self.fs * self.Tcapture)
         self.left_in = np.zeros(frame_length)
         self.right_in = np.zeros(frame_length)
