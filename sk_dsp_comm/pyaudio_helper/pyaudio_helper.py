@@ -81,6 +81,8 @@ class DSPIOStream(InteractiveWidgets):
         self.data_capture_left = list()
         self.data_capture_right = list()
         self.Tcapture = t_capture
+        self.Tsec = None
+        self.numChan = None
         self.Ncapture = int(self.fs * self.Tcapture)
         self.left_in = np.zeros(frame_length)
         self.right_in = np.zeros(frame_length)
